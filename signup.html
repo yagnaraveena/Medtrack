@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - MedTrack</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6f2ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .form-box {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 350px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #007acc;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .account-options {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .account-option {
+      flex: 1;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #005f99;
+    }
+
+    .flash-message {
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .danger {
+      background-color: #ffe0e0;
+      color: #c00;
+    }
+
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .warning {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+  </style>
+</head>
+<body>
+
+  <section id="signup">
+    <form method="POST" action="/signup">
+      <div class="form-box">
+        <h2>Sign Up</h2>
+
+        <!-- 🔥 Flash Messages Block -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="flash-message {{ category }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <!-- Signup Form Fields -->
+        <!--<div class="form-group">
+          <label>Sign up as:</label>
+          <div class="account-options">
+            <label class="account-option">
+              <input type="radio" name="accountType" value="patient" required /> Patient
+            </label>
+            <label class="account-option">
+              <input type="radio" name="accountType" value="doctor" required /> Doctor
+            </label>
+          </div>
+        </div>-->
+
+        <div class="form-group">
+          <label>Name:</label>
+          <input type="text" name="name" required />
+        </div>
+
+        <div class="form-group">
+          <label>Age:</label>
+          <input type="number" name="age" required />
+        </div>
+
+        <div class="form-group">
+          <label>Gender:</label>
+          <select name="gender" required>
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Contact Number:</label>
+          <input type="text" name="contact" required />
+        </div>
+
+        <div class="form-group">
+          <label>Email ID:</label>
+          <input type="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label>Password:</label>
+          <input type="password" name="password" required />
+        </div>
+
+        <div class="form-group">
+          <label>Confirm Password:</label>
+          <input type="password" name="confirm_password" required />
+        </div>
+
+        <button type="submit">Sign Up</button>
+      </div>
+    </form>
+  </section>
+
+</body>
+</html>

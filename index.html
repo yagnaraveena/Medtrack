@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedTrack Website</title>
+  <style>
+    body {
+      background-color: #e0fff4; /* Mint green background */
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: black;
+    }
+    nav {
+      background-color: #0077b6;
+      padding: 1em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 24px;
+      color: white;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+    .logo::before {
+      content: "\2695 ";
+      font-size: 28px;
+      margin-right: 8px;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin-left: 20px;
+      cursor: pointer;
+    }
+    section {
+      padding: 2em;
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+    .form-group {
+      margin-bottom: 1em;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5em;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.5em;
+    }
+    button {
+      padding: 0.5em 1em;
+      background-color: #0077b6;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    h2 {
+      color: #0077b6;
+    }
+    .form-box {
+      background-color: white;
+      max-width: 400px;
+      margin: 2em auto;
+      padding: 1.5em;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    .about-box, .home-container {
+      background-color: white;
+      max-width: 750px;
+      margin: 2em auto;
+      padding: 2em;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    .center-title {
+      text-align: center;
+      font-size: 36px;
+      margin-top: 50px;
+    }
+    .home-text {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    ul.service-list {
+      padding-left: 20px;
+      line-height: 1.8;
+    }
+    ul.service-list li {
+      margin-bottom: 10px;
+    }
+    .account-options {
+      display: flex;
+      gap: 10px;
+      margin-top: 0.5em;
+    }
+    .account-option {
+      padding: 0.5em 1em;
+      border: 2px solid #0077b6;
+      border-radius: 6px;
+      background-color: #e0f3fc;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background-color 0.3s ease;
+    }
+    .account-option:hover {
+      background-color: #cdefff;
+    }
+    .account-option input[type="radio"] {
+      accent-color: #0077b6;
+    }
+    .contact-box {
+      background-color: white;
+      max-width: 600px;
+      margin: 2em auto;
+      padding: 2em;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333;
+    }
+    .doctor-box {
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .doctor-box h2 {
+      color: #0077b6;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .doctor-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .doctor-card h3 {
+      margin-top: 0;
+      color: #0077b6;
+    }
+    .doctor-card p {
+      margin: 6px 0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">MedTrack</div>
+    <div class="nav-links">
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('login')">Login</a>
+      <a onclick="showPage('signup')">Signup</a>
+      <a onclick="showPage('services')">Services</a>
+      <a onclick="showPage('about')">About Us</a>
+    
+      <a onclick="showPage('contact')">Contact Us</a>
+    </div>
+  </nav>
+
+  <section id="home" class="active">
+    <h2 class="center-title">Welcome to MedTrack</h2>
+    <div class="home-container">
+      <div class="home-text">
+        <p>MedTrack is your one-stop destination for managing your healthcare needs...</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="login">
+    <div class="form-box">
+      <h2>Login</h2>
+      <form action="/login" method="POST">
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label>Password:</label>
+          <input type="password" name="password" required />
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="signup">
+    <div class="form-box">
+      <h2>Sign Up</h2>
+      <form action="/signup" method="POST">
+        <div class="form-group">
+          <label>Name:</label>
+          <input type="text" name="name" required />
+        </div>
+        <div class="form-group">
+          <label>Age:</label>
+          <input type="number" name="age" required />
+        </div>
+        <div class="form-group">
+          <label>Gender:</label>
+          <select name="gender" required>
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Contact Number:</label>
+          <input type="text" name="contact" required />
+        </div>
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label>Password:</label>
+          <input type="password" name="password" required />
+        </div>
+        <div class="form-group">
+          <label>Confirm Password:</label>
+          <input type="password" name="confirm_password" required />
+        </div>
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="about-box">
+      <h2>Our Services</h2>
+      <ul class="service-list">
+        <li><strong>Appointment Scheduling</strong>: Book and manage appointments...</li>
+        <li><strong>Digital Prescriptions</strong>: Securely issued by doctors...</li>
+        <!-- Add more services -->
+      </ul>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about-box">
+      <h2>About Us</h2>
+      <p>MedTrack is a pioneering healthcare platform aimed at revolutionizing medical info access...</p>
+    </div>
+  </section>
+
+  
+
+  <section id="contact">
+    <div class="contact-box">
+      <h2>Contact Us</h2>
+      <p><strong>Phone:</strong> +91 9876543210</p>
+      <p><strong>Email:</strong> support@medtrack.com</p>
+    </div>
+  </section>
+
+  <script>
+    function showPage(pageId) {
+      const sections = document.querySelectorAll("section");
+      sections.forEach(section => section.classList.remove("active"));
+      document.getElementById(pageId).classList.add("active");
+    }
+  </script>
+</body>
+</html>

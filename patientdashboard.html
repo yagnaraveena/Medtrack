@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Patient Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #0077b6;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 24px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .box {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      color: #0077b6;
+      margin-bottom: 20px;
+      font-size: 22px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    .info-group {
+      margin-bottom: 12px;
+    }
+
+    .info-label {
+      font-weight: bold;
+      display: inline-block;
+      width: 160px;
+      color: #333;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    Patient Dashboard
+  </header>
+
+  <div class="container">
+
+    <!-- Patient Info -->
+    <div class="box">
+      <h2>Patient Information</h2>
+      <div class="info-group"><span class="info-label">Full Name:</span> {{ patient['name'] }}</div>
+      <div class="info-group"><span class="info-label">Age:</span> {{ patient['age'] }}</div>
+      <div class="info-group"><span class="info-label">Gender:</span> {{ patient['gender'] }}</div>
+      <div class="info-group"><span class="info-label">Contact:</span> {{ patient['contact'] }}</div>
+      <div class="info-group"><span class="info-label">Address:</span> {{ patient['address'] }}</div>
+      <div class="info-group"><span class="info-label">Blood Group:</span> {{ patient['bloodGroup'] }}</div>
+    </div>
+    
+    <!-- Medical History -->
+    <div class="box">
+      <h2>Medical History</h2>
+      <p>{{ patient['medicalHistory'] if patient['medicalHistory'] else "No medical history provided." }}</p>
+    </div>
+
+    
+
+  <footer>
+    &copy; 2025 MedTrack - All Rights Reserved
+  </footer>
+
+</body>
+</html>

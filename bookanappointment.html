@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Appointment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef6f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #0077b6;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 24px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .form-section, .list-section {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      color: #0077b6;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .submit-btn {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .appointment-item {
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+
+    .flash-message {
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .danger {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    .no-appointments {
+      color: #888;
+      font-style: italic;
+    }
+
+    footer {
+      text-align: center;
+      color: #666;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    Book an Appointment
+  </header>
+
+  <div class="container">
+
+    <!-- Flash Messages -->
+    <!--{% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash-message {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}-->
+
+    <!-- Appointment Form -->
+    <div class="form-section">
+      <h2>New Appointment</h2>
+      <form method="POST" action="/bookanappointment">
+        <div class="form-group">
+          <label for="patientName">Patient Name</label>
+          <input type="text" id="patientName" name="patientName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="doctorName">Doctor Name</label>
+          <input type="text" id="doctorName" name="doctorName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="date">Appointment Date</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+
+        <div class="form-group">
+          <label for="time">Appointment Time</label>
+          <input type="time" id="time" name="time" required>
+        </div>
+
+        <div class="form-group">
+          <label for="reason">Reason for Visit</label>
+          <textarea id="reason" name="reason" rows="3" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Book Appointment</button>
+      </form>
+    </div>
+
+    <!-- Booked Appointments -->
+    <div class="list-section">
+      <h2>Booked Appointments</h2>
+
+      {% if appointments and appointments|length > 0 %}
+        {% for app in appointments %}
+          <div class="appointment-item">
+            <strong>Patient:</strong> {{ app.patientName }} <br>
+            <strong>Doctor:</strong> {{ app.doctorName }} <br>
+            <strong>Date:</strong> {{ app.date }} <br>
+            <strong>Time:</strong> {{ app.time }} <br>
+            <strong>Reason:</strong> {{ app.reason }}
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="no-appointments">No appointments booked yet.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 MedTrack - All Rights Reserved
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Doctor Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 40px;
+    }
+
+    .doctor-box {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 500px;
+      margin: 0 auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .doctor-box h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .doctor-box p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .doctor-box strong {
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="doctor-box">
+    <h2>Doctor Details</h2>
+    <p><strong>Name:</strong> {{ doctor.name }}</p>
+    <p><strong>Specialization:</strong> {{ doctor.specialization }}</p>
+    <p><strong>Experience:</strong> {{ doctor.experience }} years</p>
+    <p><strong>Qualification:</strong> {{ doctor.qualification }}</p>
+    <p><strong>Availability:</strong> {{ doctor.availability }}</p>
+    <p><strong>Contact:</strong> {{ doctor.contact }}</p>
+    <p><strong>Email:</strong> {{ doctor.email }}</p>
+    <p><strong>Address:</strong> {{ doctor.address }}</p>
+  </div>
+</body>
+</html>
